@@ -25,7 +25,7 @@ export default function Header() {
                 className="w-full h-full object-contain"
               />
             </div>
-            <h1 className="text-lg md:text-xl tracking-wider">ARCURATE</h1>
+            <h1 className="text-xs tracking-wider">ARCURATE</h1>
           </span>
         </motion.div>
         <motion.button 
