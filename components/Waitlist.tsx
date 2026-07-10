@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 export default function Waitlist() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("United Kingdom");
+  const [country, setCountry] = useState("Other");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -14,7 +14,7 @@ export default function Waitlist() {
     setSubmitted(true);
     setFullName("");
     setEmail("");
-    setCountry("United Kingdom");
+    setCountry("Other");
     setTimeout(() => setSubmitted(false), 2000);
   };
   return (
