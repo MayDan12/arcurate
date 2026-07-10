@@ -19,7 +19,7 @@ const item: Variants = {
 
 export default function SolutionSections() {
   return (
-    <section className="border-b border-gray-800 overflow-hidden">
+    <section className="border-b border-white/20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}

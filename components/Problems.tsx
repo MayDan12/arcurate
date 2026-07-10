@@ -20,7 +20,7 @@ const item: Variants = {
 
 export default function Problems() {
   return (
-    <section className="border-b border-white overflow-hidden">
+    <section className="border-b border-white/20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-20">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

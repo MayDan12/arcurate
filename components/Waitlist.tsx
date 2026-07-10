@@ -18,7 +18,7 @@ export default function Waitlist() {
     setTimeout(() => setSubmitted(false), 2000);
   };
   return (
-    <section id="waitlist" className="border-b border-white overflow-hidden">
+    <section id="waitlist" className="border-b border-white/20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
         {/* Left Column - Benefits */}
         <motion.div 

@@ -8,6 +8,7 @@ import Hero from "@/components/Hero";
 import Waitlist from "@/components/Waitlist";
 import Problems from "@/components/Problems";
 import SolutionSections from "@/components/SolutionSections";
+import Gallery from "@/components/Gallery";
 import SomethingBig from "@/components/Somethingbig";
 import Footer from "@/components/Footer";
 
@@ -21,6 +22,9 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
+           {/* Gallery Section */}
+      <Gallery />
+
       {/* Waitlist Section */}
       <Waitlist />
 
@@ -29,6 +33,8 @@ export default function Home() {
 
       {/* Solutions Section */}
       <SolutionSections />
+
+ 
 
       {/* CTA Section */}
      <SomethingBig />

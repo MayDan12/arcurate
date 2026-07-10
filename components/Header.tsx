@@ -8,7 +8,7 @@ export default function Header() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="border-b border-white"
+      className="border-b border-white/20"
     >
       <div className="max-w-7xl mx-auto px-4 py-4 md:py-6 flex items-center justify-between">
         <motion.div 
