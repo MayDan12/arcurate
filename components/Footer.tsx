@@ -19,7 +19,7 @@ export default function Footer() {
           -translate-x-1/2
           -translate-y-1/2 md:-translate-y-0
           whitespace-nowrap
-          text-[60px] sm:text-[200px] md:text-[200px] lg:text-[254px]
+          text-[90px] sm:text-[130px] md:text-[170px] lg:text-[230px]
           font-extrabold
           uppercase
           leading-none

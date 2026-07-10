@@ -15,7 +15,7 @@ export default function Hero() {
   });
 
   // Smoother animations with more refined values
-  const width = useTransform(scrollYProgress, [0, 0.8, 1], ["60%", "75%", "90%"]);
+  const width = useTransform(scrollYProgress, [0, 0.8, 1], ["60%", "75%", "95%"]);
   const y = useTransform(scrollYProgress, [0, 0.5, 1], [200, 50, 0]);
   const borderRadius = useTransform(scrollYProgress, [0, 0.6, 1], ["50px", "40px", "20px"]);
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7], [0, 0.8, 1]);
