@@ -17,18 +17,18 @@ const galleryImages = [
     alt: "Architectural visualization",
     title: "Visualization",
   },
-    {
-    id: 3,
-    src: "/img_two.png",
-    alt: "Modern architectural design",
-    title: "Design",
-  },
-  {
-    id: 4,
-    src: "/img_one.png",
-    alt: "Architectural visualization",
-    title: "Visualization",
-  },
+  //   {
+  //   id: 3,
+  //   src: "/img_two.png",
+  //   alt: "Modern architectural design",
+  //   title: "Design",
+  // },
+  // {
+  //   id: 4,
+  //   src: "/img_one.png",
+  //   alt: "Architectural visualization",
+  //   title: "Visualization",
+  // },
 //   {
 //     id: 3,
 //     src: "/managing.png",

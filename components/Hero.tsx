@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useEffect, useState } from "react";
 
@@ -21,9 +21,7 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7], [0, 0.8, 1]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 0.95, 1]);
 
-  // Parallax effect for images
-  const imageY1 = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  const imageY2 = useTransform(scrollYProgress, [0, 1], [0, 30]);
+
 
   useEffect(() => {
     // Enhanced intersection observer with better options
@@ -54,13 +52,13 @@ export default function Hero() {
 
   return (
     <section className="border-b border-white/20 overflow-hidden flex flex-col items-center ">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-16  grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-16 flex flex-col items-center justify-center">
         {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-center lg:text-left order-1"
+          className="text-center flex flex-col items-center"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -79,10 +77,10 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight"
           >
-            Architecture
-            <br />
+            Architecture {""}
+            {/* <br /> */}
             <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-              Made Clear.
+               Made Clear.
             </span>
           </motion.h1>
 
@@ -90,7 +88,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-gray-400 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-xl mx-auto lg:mx-0"
+            className="text-gray-400 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-xl mx-auto"
           >
             Get professional architectural drawings, planning support, 3D
             visualisations, and project guidance for your next building project.
@@ -100,7 +98,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
           >
             <button className="px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-gray-200 transition-all duration-300 hover:scale-105 active:scale-95">
               Get Started
@@ -110,61 +108,10 @@ export default function Hero() {
             </button>
           </motion.div>
         </motion.div>
-
-        {/* Images Grid */}
-        <div className="relative h-[320px] sm:h-[380px] lg:h-[460px] w-full order-2 lg:order-2">
-          <motion.div
-            initial={{ opacity: 0, x: 30, y: -30 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ y: imageY1 }}
-            className="absolute top-0 left-0 w-[55%] sm:w-[50%] lg:w-[58%] h-[200px] sm:h-[220px] lg:h-[260px] rounded-2xl overflow-hidden z-20 shadow-2xl shadow-black/40"
-          >
-            <Image
-              src="/hero_one.png"
-              alt="Modern architectural design"
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-700"
-              priority
-              sizes="(max-width: 768px) 55vw, (max-width: 1200px) 45vw, 35vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-          </motion.div>
-
-          {/* Bottom Image - Smaller with adjusted position to overlap */}
-          <motion.div
-            initial={{ opacity: 0, x: -30, y: 30 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ y: imageY2 }}
-            className="absolute top-[120px] sm:top-[160px] lg:top-[200px] right-0 w-[55%] sm:w-[50%] lg:w-[58%] h-[180px] sm:h-[200px] lg:h-[240px] rounded-2xl overflow-hidden z-10 shadow-2xl shadow-black/40"
-          >
-            <Image
-              src="/hero_two.png"
-              alt="Architectural visualization"
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-700"
-              priority
-              sizes="(max-width: 768px) 55vw, (max-width: 1200px) 45vw, 35vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-          </motion.div>
-
-          {/* Decorative badge */}
-          {/* <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 hidden lg:flex items-center gap-3"
-          >
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-white">Trusted by 500+ clients</span>
-          </motion.div> */}
-        </div>
       </div>
 
       {/* Video Reveal Section - Enhanced */}
-      <div className="w-full flex justify-center mt-16 mb-16 h-[400px] sm:h-[500px] md:h-[70vh] lg:h-[85vh] px-4">
+      <div className="w-full flex justify-center mt-5 mb-16 h-[400px] sm:h-[500px] md:h-[70vh] lg:h-[85vh] px-4">
         <motion.div
           ref={videoContainerRef}
           style={{
