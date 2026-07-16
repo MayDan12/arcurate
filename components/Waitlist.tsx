@@ -6,16 +6,42 @@ import { motion } from "motion/react";
 export default function Waitlist() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("Other");
+  const [help, setHelp] = useState("");
+  const [country, setCountry] = useState("United Kingdom");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setFullName("");
-    setEmail("");
-    setCountry("Other");
-    setTimeout(() => setSubmitted(false), 2000);
+    setLoading(true);
+
+    const nameParts = fullName.trim().split(" ");
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
+
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firstName, lastName, email, help, country }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        setFullName("");
+        setEmail("");
+        setHelp("");
+        setCountry("United Kingdom");
+        setTimeout(() => setSubmitted(false), 3000);
+      } else {
+        const data = await res.json();
+        alert(data.error || "Failed to join waitlist.");
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <section id="waitlist" className="border-b border-white/20 overflow-hidden">
@@ -106,15 +132,28 @@ export default function Waitlist() {
                 <option>Other</option>
               </select>
             </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                What are you planning to build?
+              </label>
+              <textarea
+                value={help}
+                onChange={(e) => setHelp(e.target.value)}
+                placeholder="Tell us about your project..."
+                className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:outline-none focus:border-white text-white placeholder-gray-600 resize-none h-24"
+                required
+              />
+            </div>
             <p className="text-xs text-white/50">
               By joining, you agree to receive launch updates from Arcurie. No
               spam.
             </p>
             <button
               type="submit"
-              className="w-full bg-white text-black py-3 rounded-full font-medium hover:bg-gray-200 transition"
+              disabled={loading}
+              className="w-full bg-white text-black py-3 rounded-full font-medium hover:bg-gray-200 transition disabled:opacity-50"
             >
-              {submitted ? "Joined!" : "Join Waitlist"}
+              {loading ? "Joining..." : submitted ? "Joined!" : "Join Waitlist"}
             </button>
           </form>
         </motion.div>
